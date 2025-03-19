@@ -48,6 +48,42 @@ int main() {
         }
     }
     
+    // Habilidades
+    int origem_cone_linha = 6, origem_cone_coluna = 5;
+    int origem_cruz_linha = 4, origem_cruz_coluna = 4;
+    int origem_octaedro_linha = 7, origem_octaedro_coluna = 7;
+    
+    // Habilidade Cone
+    for (int i = 0; i < 3; i++) {
+        for (int j = -i; j <= i; j++) {
+            if (origem_cone_linha + i < 10 && origem_cone_coluna + j >= 0 && origem_cone_coluna + j < 10) {
+                tabuleiro[origem_cone_linha + i][origem_cone_coluna + j] = 5;
+            }
+        }
+    }
+    
+    // Habilidade Cruz
+    for (int i = -2; i <= 2; i++) {
+        if (origem_cruz_linha + i >= 0 && origem_cruz_linha + i < 10) {
+            tabuleiro[origem_cruz_linha + i][origem_cruz_coluna] = 5;
+        }
+        if (origem_cruz_coluna + i >= 0 && origem_cruz_coluna + i < 10) {
+            tabuleiro[origem_cruz_linha][origem_cruz_coluna + i] = 5;
+        }
+    }
+    
+    // Habilidade Octaedro
+    for (int i = -2; i <= 2; i++) {
+        for (int j = -2; j <= 2; j++){
+            if ((i + j >= -2 && i + j <= 2) && (i - j >= -2 && i - j <= 2)) {
+                if (origem_octaedro_linha + i >= 0 && origem_octaedro_linha + i < 10 &&
+                        origem_octaedro_coluna + j >= 0 && origem_octaedro_coluna + j < 10) {
+                            tabuleiro[origem_octaedro_linha + i][origem_octaedro_coluna + j] = 5;
+                }
+            }
+        }
+    }
+    
     // Exibindo o tabuleiro
     printf("   A B C D E F G H I J\n");
     for (int i = 0; i < 10; i++) {
